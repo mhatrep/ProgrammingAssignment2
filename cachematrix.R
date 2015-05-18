@@ -5,21 +5,36 @@
 # 3) set value of inverse of  matrix
 # 4) get value of inverse of  matrix
 
-makeCacheMatrix <- function(x = matrix()) {
-
-
-
-
-
-
-
-
+makeCacheMatrix <- function(inputMatrix = matrix()) 
+{
+    inverseMatrix <- NULL
+    set <- function(input) 
+	{
+        inputMatrix <<- input
+        inverseMatrix <<- NULL
+    }
+    get <- function() inputMatrix
+    setinverse <- function(inverse) inverseMatrix <<- inverse
+    getinverse <- function() inverseMatrix
+    list(set = set, get = get, setinverse = setinverse, getinverse = getinverse)
 }
 
+##################################################################################
+# Note - cacheSolve assumes the matrix is invertible
+# cacheSolve returns inverse of matrix. When operation is triggered, it checks if
+# the inverse is already calculated. If yes, return the result. If not, it calculates 
+# the inverse and stores the value in cache
 
-## Compute inverse of matrix.
-# If inverse is already calculated, retrieve from cache.
-
-cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
+cacheSolve <- function(inputMatrix, ...) 
+{
+    inverseMatrix <- inputMatrix$getinverse()
+    if(!is.null(inverseMatrix)) 
+	{
+        message("Retrieving cached data......")
+        return(inverseMatrix)
+    }
+    tempMat <- inputMatrix$get()
+    inverseMatrix <- solve(tempMat)
+    inputMatrix$setinverse(inverseMatrix)
+    inverseMatrix
 }
