@@ -1,7 +1,9 @@
-## Put comments here that give an overall description of what your
-## functions do
-
-## Cache & compute inverse of matrix.
+# Matrix inversion is CPU intensive calculation. Caching offers performance 
+# boost for the inverse operation. makeCacheMatrix performs the steps below.
+# 1) set value of matrix
+# 2) get value of matrix
+# 3) set value of inverse of  matrix
+# 4) get value of inverse of  matrix
 
 makeCacheMatrix <- function(x = matrix()) {
 
