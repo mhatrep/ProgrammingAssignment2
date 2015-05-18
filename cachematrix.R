@@ -1,3 +1,8 @@
+# Usage
+# matInv = makeCacheMatrix(mat) where 'mat' is invertible matrix.
+# cacheSolve(matInv)
+# cacheSolve(matInv) (call again)
+
 # Matrix inversion is CPU intensive calculation. Caching offers performance 
 # boost for the inverse operation. makeCacheMatrix performs the steps below.
 # 1) set value of matrix
@@ -30,7 +35,7 @@ cacheSolve <- function(inputMatrix, ...)
     inverseMatrix <- inputMatrix$getinverse()
     if(!is.null(inverseMatrix)) 
 	{
-        message("Retrieving cached data......")
+        message("Retrieving cached data .....")
         return(inverseMatrix)
     }
     tempMat <- inputMatrix$get()
